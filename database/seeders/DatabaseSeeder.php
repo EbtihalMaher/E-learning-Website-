@@ -2,22 +2,42 @@
 
 namespace Database\Seeders;
 
+use App\Models\ContactMessage;
+use App\Models\Course;
+use App\Models\Faq;
+use App\Models\Testimonial;
 use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\UserCourse;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
-        // User::factory(10)->create();
+        // Create users
+        $users = User::factory(5)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        // Create courses
+        $courses = Course::factory(5)->create();
+
+        // Create testimonials
+        Testimonial::factory(5)->create();
+
+        // Create FAQs
+        Faq::factory(5)->create();
+
+        // Create contact messages
+        ContactMessage::factory(5)->create();
+
+        // Create user_course
+        foreach($users as $user) {
+            $userCourses = $courses->random(rand(1, 3));
+            foreach($userCourses as $course) {
+                UserCourse::factory(1)->create([
+                    'user_id' => $user->id,
+                    'course_id' => $course->id,
+                ]);
+            }
+        }
     }
 }

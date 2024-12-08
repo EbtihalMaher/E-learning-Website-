@@ -13,7 +13,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('description');
-            $table->integer('duration_hours');
+            $table->string('duration_hours');
             $table->string('level');
             $table->string('image_url')->nullable();
             $table->timestamps();
