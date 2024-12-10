@@ -2,15 +2,13 @@
     <x-slot:heading>
         Courses
     </x-slot:heading>
-    <ul>
+    <div>
         @foreach($courses as $course)
-            <li>
-                <a href="/courses/{{ $course['id'] }}">
-                    <strong>{{ $course['title'] }}</strong>, duration: {{ $course['duration'] }}, instructor: {{ $course['instructor'] }}, price: {{ $course['price'] }}
-                </a>
-            </li>
+            <a href="/courses/{{ $course['id'] }}" class="block px-4 py-6 border border-gray-200 rounded-lg">
+                <strong>{{ $course['title'] }}</strong>, duration: {{ $course['duration'] }}, instructor: {{ $course['instructor'] }}, price: {{ $course['price'] }}
+            </a>
             <br>
         @endforeach
-    </ul>
+    </div>
 
 </x-layouts>

@@ -11,8 +11,9 @@ Route::get('/', function () {
 });
 
 Route::get('/courses', function () {
+    $courses = Course::all();
     return view('courses',[
-        'courses' => Course::all()
+        'courses' => $courses
     ]);
 });
 
