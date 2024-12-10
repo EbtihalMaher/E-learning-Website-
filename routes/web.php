@@ -11,7 +11,7 @@ Route::get('/', function () {
 });
 
 Route::get('/courses', function () {
-    $courses = Course::all();
+    $courses = Course::simplepaginate(6);
     return view('courses',[
         'courses' => $courses
     ]);

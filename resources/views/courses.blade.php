@@ -9,6 +9,9 @@
             </a>
             <br>
         @endforeach
+        <div>
+            {{ $courses->links() }}
+        </div>
     </div>
 
 </x-layouts>
