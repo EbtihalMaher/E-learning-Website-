@@ -1,7 +1,7 @@
 <?php
 
 use App\Models\Course;
-use Illuminate\Support\Arr;
+use App\Models\ContactMessage;
 use Illuminate\Support\Facades\Route;
 
 
@@ -11,15 +11,24 @@ Route::get('/', function () {
 });
 
 Route::get('/courses', function () {
-    $courses = Course::simplepaginate(6);
-    return view('courses',[
+    $courses = Course::latest()->simplepaginate(6);
+    return view('courses.index',[
         'courses' => $courses
     ]);
 });
 
-Route::get('courses/{id}', function ($id) {
+Route::get('/courses/{id}', function ($id) {
     $course = Course::find($id);
-    return view('course',['course' => $course]);
+    return view('courses.show',['course' => $course]);
+});
+
+Route::post('/contact',function (){
+    ContactMessage::create([
+        'name' => request('name'),
+        'email' => request('email'),
+        'message' => request('message')
+    ]);
+    return redirect('/contact');
 });
 
 Route::get('/contact', function () {
