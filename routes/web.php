@@ -23,6 +23,11 @@ Route::get('/courses/{id}', function ($id) {
 });
 
 Route::post('/contact',function (){
+    request()->validate([
+        'name' => ['required','string','max:255','min:3'],
+        'email' => ['required','email'],
+        'message' => ['required','string','min:3'],
+    ]);
     ContactMessage::create([
         'name' => request('name'),
         'email' => request('email'),
