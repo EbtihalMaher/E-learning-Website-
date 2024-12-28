@@ -32,7 +32,7 @@
                             <div class="ml-10 flex items-baseline space-x-4">
                                 <x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link>
                                 <x-nav-link href="/courses" :active="request()->is('courses')">Courses</x-nav-link>
-                                <x-nav-link href="/contact" :active="request()->is('contact')" >Contact</x-nav-link>
+                                <x-nav-link href="/contact-messages/create" :active="request()->is('contact-messages/create')" >Contact</x-nav-link>
                             </div>
                         </div>
                     </div>
@@ -98,9 +98,9 @@
             <div class="md:hidden" id="mobile-menu">
                 <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
                     <!-- Current: "bg-slate-900 text-white", Default: "text-slate-300 hover:bg-slate-700 hover:text-white" -->
-                    <a href="/" class="block rounded-md bg-slate-900 px-3 py-2 text-base font-medium text-white" aria-current="page">Home</a>
-                    <a href="/about" class="block rounded-md px-3 py-2 text-base font-medium text-slate-300 hover:bg-slate-700 hover:text-white">About</a>
-                    <a href="/contact" class="block rounded-md px-3 py-2 text-base font-medium text-slate-300 hover:bg-slate-700 hover:text-white">Contact</a>
+                    <x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link>
+                    <x-nav-link href="/courses" :active="request()->is('courses')">Courses</x-nav-link>
+                    <x-nav-link href="/contact-messages/create" :active="request()->is('contact-messages/create')" >Contact</x-nav-link>
                 </div>
                 <div class="border-t border-slate-700 pb-3 pt-4">
                     <div class="flex items-center px-5">

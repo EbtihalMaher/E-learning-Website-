@@ -6,7 +6,7 @@
         <div class="mx-auto max-w-2xl text-center">
             <h2 class="text-balance text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">Contact Us</h2>
         </div>
-        <form action="/contact" method="POST" class="mx-auto mt-16 max-w-xl sm:mt-20">
+        <form action="/contact-messages" method="POST" class="mx-auto mt-16 max-w-xl sm:mt-20">
             @csrf
             <div class="sm:col-span-2 ">
                 <div>

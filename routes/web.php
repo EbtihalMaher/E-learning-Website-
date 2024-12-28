@@ -1,41 +1,25 @@
 <?php
 
-use App\Models\Course;
-use App\Models\ContactMessage;
+use App\Http\Controllers\ContactMessageController;
+use App\Http\Controllers\CourseController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [HomeController::class, 'index']);
 
-Route::get('/courses', function () {
-    $courses = Course::latest()->simplepaginate(6);
-    return view('courses.index',[
-        'courses' => $courses
-    ]);
-});
+//Route::controller(CourseController::class)->group(function () {
+//    Route::get('/courses', 'index');
+//    Route::get('/courses/{course}', 'show');
+//});
 
-Route::get('/courses/{id}', function ($id) {
-    $course = Course::find($id);
-    return view('courses.show',['course' => $course]);
-});
+Route::resource('courses', CourseController::class, ['only' => ['index', 'show']]);
 
-Route::post('/contact',function (){
-    request()->validate([
-        'name' => ['required','string','max:255','min:3'],
-        'email' => ['required','email'],
-        'message' => ['required','string','min:3'],
-    ]);
-    ContactMessage::create([
-        'name' => request('name'),
-        'email' => request('email'),
-        'message' => request('message')
-    ]);
-    return redirect('/contact');
-});
+//Route::controller(ContactMessageController::class)->group(function () {
+//    Route::get('/contact-messages/create', 'create');
+//    Route::post('/contact-messages', 'store');
+//});
 
-Route::get('/contact', function () {
-    return view('contact');
-});
+Route::resource('contact-messages', ContactMessageController::class, ['only' => ['create', 'store']]);
+
