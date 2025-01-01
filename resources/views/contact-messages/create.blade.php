@@ -10,30 +10,24 @@
             @csrf
             <div class="sm:col-span-2 ">
                 <div>
-                    <label for="name" class="block text-sm/6 font-semibold text-gray-900">Name</label>
+                    <x-form-label for="name">Name</x-form-label>
                     <div class="mt-2.5">
-                        <input type="text" name="name" id="name" autocomplete="name" class="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600" required>
-                        @error('name')
-                            <p class="text-xs text-red-500 font-semibold mt-1">{{ $message }}</p>
-                        @enderror
+                        <x-form-input type="text" name="name" id="name" autocomplete="name" :value="old('name')" required></x-form-input>
+                        <x-form-error name="name"/>
                     </div>
                 </div>
                 <div class="pt-3 sm:col-span-2">
-                    <label for="email" class="block text-sm/6 font-semibold text-gray-900">Email</label>
+                    <x-form-label for="email">Email</x-form-label>
                     <div class="mt-2.5">
-                        <input type="email" name="email" id="email" autocomplete="email" class="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600" required>
-                        @error('email')
-                            <p class="text-xs text-red-500 font-semibold mt-1">{{ $message }}</p>
-                        @enderror
+                        <x-form-input type="email" name="email" id="email" autocomplete="email" :value="old('email')" required></x-form-input>
+                        <x-form-error name="email"/>
                     </div>
                 </div>
                 <div class="pt-3 sm:col-span-2">
-                    <label for="message" class="block text-sm/6 font-semibold text-gray-900">Message</label>
+                    <x-form-label for="message">Message</x-form-label>
                     <div class="mt-2.5">
-                        <textarea name="message" id="message" rows="4" class="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600" required></textarea>
-                        @error('message')
-                            <p class="text-xs text-red-500 font-semibold mt-1">{{ $message }}</p>
-                        @enderror
+                        <textarea name="message" id="message" rows="4" :value="old('message')" class="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600" required></textarea>
+                        <x-form-error name="message"/>
                     </div>
                 </div>
             </div>
@@ -47,7 +41,7 @@
 {{--                @endif--}}
 {{--            </div>--}}
             <div class="mt-10">
-                <button type="submit" class="block w-full rounded-md bg-indigo-700 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Let's talk</button>
+                <x-form-button>Let's talk</x-form-button>
             </div>
         </form>
     </div>
